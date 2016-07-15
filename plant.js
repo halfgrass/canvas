@@ -1,10 +1,3 @@
-document.body.innerHTML="";
-var canvas = document.createElement("canvas");
-canvas.width = document.body.clientWidth;;
-canvas.height = document.body.clientHeight;
-canvas.id = "canvas";
-document.body.appendChild(canvas);
-
 !(function(id,data){
 	var canvas = document.getElementById(id);
 	var width = canvas.width;
@@ -30,7 +23,6 @@ document.body.appendChild(canvas);
 		ctx.putImageData(imgdata, 0, 0);
 		ctx.save();
 		ctx.globalAlpha = 0.2;
-		//ctx.strokeStyle = color();
 		ctx.beginPath();
 		for(var i=0;i<data.length;i++){
 			ctx.lineTo(width/2-data[i].r*Math.cos(data[i].ag*Math.PI*2/360), height/2-data[i].r*Math.sin(data[i].ag*Math.PI*2/360));
@@ -44,19 +36,11 @@ document.body.appendChild(canvas);
 			ctx.translate(width/2, height/2);
 			ctx.rotate(data[i].ag * Math.PI / 180);
 			ctx.fillStyle = "green";
-			//ctx.fillStyle = color();
 			ctx.beginPath();
 			ctx.arc(-data[i].r, 0, 10, 0, Math.PI*2, true);
 			ctx.fill();
 			ctx.restore();
 		}
-	}
-	
-	function color(){
-		var r = Math.random()*256|0;
-		var g = Math.random()*256|0;
-		var b = Math.random()*256|0;
-		return "#"+((r << 16) | (g << 8) | b).toString(16).toUpperCase();
 	}
 	
 	var runtimer = setInterval(function(){

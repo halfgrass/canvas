@@ -31,7 +31,8 @@ document.body.appendChild(canvas);
 		var y = Math.random()*height;
 		var s = Math.random()*5;
 		var d = Math.random()*360;
-		data.push({x:x,y:y,s:s,d:d,l:0});
+		var sz = Math.random()*10+5;
+		data.push({x:x,y:y,s:s,d:d,sz:sz});
 	}
 	function line(x1,y1,x2,y2){
 		ctx.beginPath();
@@ -47,7 +48,7 @@ document.body.appendChild(canvas);
 			ctx.save();
 			ctx.translate(0.5,0.5);
 			ctx.beginPath();
-			ctx.arc(oi.x, oi.y, 10 , 0, Math.PI * 2, true);
+			ctx.arc(oi.x, oi.y, oi.sz , 0, Math.PI * 2, true);
 			ctx.closePath();
 			ctx.fill();
 			
